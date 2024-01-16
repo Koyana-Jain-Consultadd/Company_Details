@@ -58,3 +58,17 @@ def register(request):
         return redirect('/register/')
 
     return render(request, 'register.html')
+
+def add_employee(request):
+    if request.method=="POST":
+        data=request.POST
+
+        e_name=data.get('e_name')
+        e_addr=data.get('e_addr')
+
+        Employee.objects.create(
+            e_name=e_name,
+            e_addr=e_addr,
+        )
+        messages.info(request, "Employee added Successfully!")
+        return redirect('/employees/')

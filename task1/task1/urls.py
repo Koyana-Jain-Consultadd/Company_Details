@@ -24,5 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/' ,register, name="register"),
     path('login/' ,login_page, name="login_page"),
-    path('employees/', employees, name="employees")
+    path('employees/', employees, name="employees"),
+    path('add_employee/', add_employee, name="add_employee"),
+    
 ]
