@@ -1,14 +1,18 @@
 from django.shortcuts import redirect, render
-from .models import *
+from info.models import *
+from info.views import *
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.hashers import check_password
+
 # Create your views here.
 def employees(request):
     return render(request,'employees.html')
 
 def login_page(request):
+    queryset = Employee.objects.all()
+    print("Name: " ,queryset)
 
     if request.method == "POST":
         username = request.POST.get('username')
@@ -60,6 +64,9 @@ def register(request):
     return render(request, 'register.html')
 
 def add_employee(request):
+    queryset = Employee.objects.all()
+    print("Name: " ,queryset)
+    
     if request.method=="POST":
         data=request.POST
 
@@ -72,3 +79,7 @@ def add_employee(request):
         )
         messages.info(request, "Employee added Successfully!")
         return redirect('/employees/')
+    
+    
+    context={"employees": queryset}
+    return render(request, 'employees.html', context)
