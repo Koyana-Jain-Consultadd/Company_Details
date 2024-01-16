@@ -27,5 +27,7 @@ urlpatterns = [
     path('employees/', employees, name="employees"),
     path('add_employee/', add_employee, name="add_employee"),
     path('employee_list/', employee_list, name="employee_list"),
+    path('delete_emp/<id>/', delete_emp, name="delete_emp"),
+    path('update_emp/<id>/', update_emp, name="update_emp"),
     
 ]

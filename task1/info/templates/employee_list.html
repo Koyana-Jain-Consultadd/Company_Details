@@ -21,8 +21,9 @@
                 <td>{{emp.e_addr}}</td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Actions">
-                        <button type="button" class="btn btn-success">Update</button>
-                        <button type="button" class="btn btn-danger">Delete</button>
+                        <a href="/update_emp/{{emp.e_id}}/" class="btn btn-success">Update</a>
+                        <a href="/delete_emp/{{emp.e_id}}/" class="btn btn-danger">Delete</a>
+                    
                     </div>
                 </td>
             </tr>

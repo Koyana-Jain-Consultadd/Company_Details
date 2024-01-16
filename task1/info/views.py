@@ -81,3 +81,23 @@ def employee_list(request):
     queryset = Employee.objects.all()
     context={'employees':queryset}
     return render(request, 'employee_list.html',context)
+
+def delete_emp(request,id):
+    queryset=Employee.objects.get(e_id=id)
+    queryset.delete()
+    return redirect('employee_list')
+
+def update_emp(request,id):
+    queryset=Employee.objects.get(e_id=id)
+    if request.method == "POST":
+        data=request.POST
+        e_name=data.get('e_name')
+        e_addr=data.get('e_addr')
+
+        queryset.e_name=e_name
+        queryset.e_addr=e_addr
+        
+        queryset.save()
+        messages.info(request, "Employee Updated Successfully!")
+    context={'employees':queryset}
+    return render(request, 'update_emp.html',context)
