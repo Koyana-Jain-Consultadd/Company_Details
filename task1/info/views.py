@@ -2,9 +2,32 @@ from django.shortcuts import redirect, render
 from .models import *
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.hashers import check_password
 # Create your views here.
+def employees(request):
+    return render(request,'employees.html')
 
 def login_page(request):
+
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        if not User.objects.filter(username=username).exists():
+            messages.error(request, "Invalid Username ")
+            return redirect('/login/')
+        
+        user = authenticate(request, username=username, password=password)
+       
+        if user is not None:
+            print("User authenticated successfully:", user.username)
+            login(request, user)
+            return redirect('/employees/')
+        else:
+            messages.error(request, "Invalid Username or Password")
+            return redirect('/login/')
+
     return render(request, 'login.html')
 
 def register(request):

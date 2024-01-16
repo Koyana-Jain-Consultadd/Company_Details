@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block start %}
+{{request.user}}
+{% csrf_token %}
+
+<h1>Employee Page</h1>
+{% endblock %}

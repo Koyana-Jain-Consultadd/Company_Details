@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block start %}
 
-<form method="POST">
-  <div class="col-6 mx-auto card p-3 shadow-lg" method="POST" enctype="multipart/form-data">
+<form class="col-6 mx-auto card p-3 shadow-lg" method="POST" enctype="multipart/form-data">
+  <div class="mb-3">
     {% csrf_token %}
     <h2>Register</h2>
     <hr>
@@ -36,7 +36,7 @@
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1">
+      <input name="password" type="password" class="form-control" id="exampleInputPassword1">
     </div>
     <p> Already have account <a href="/login/">Login</a></p>
     <button type="submit" class="btn btn-primary">Register</button>
