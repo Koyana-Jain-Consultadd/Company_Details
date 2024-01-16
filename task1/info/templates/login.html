@@ -1,7 +1,16 @@
 {% extends "base.html" %}
 {% block start %}
-
-<form action="{% url 'login_page' %}" class="col-6 mx-auto card p-3 shadow-lg" method="POST" enctype="multipart/form-data">
+<style>
+  .login-container {
+    background-color: rgba(222, 235, 194, 0.9);
+    border-radius: 10px;
+    padding: 20px;
+    width: 70%;
+    max-width: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+</style>
+<form action="{% url 'login_page' %}" class="login-container col-6 mx-auto card p-3 shadow-lg mt-5" method="POST" enctype="multipart/form-data">
     <div class="mb-3">
         {% csrf_token %}
         <h2>Login</h2>
