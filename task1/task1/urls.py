@@ -26,5 +26,6 @@ urlpatterns = [
     path('login/' ,login_page, name="login_page"),
     path('employees/', employees, name="employees"),
     path('add_employee/', add_employee, name="add_employee"),
+    path('employee_list/', employee_list, name="employee_list"),
     
 ]

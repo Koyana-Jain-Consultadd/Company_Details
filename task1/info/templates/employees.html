@@ -27,35 +27,4 @@
       <button type="submit" class="btn btn-primary mt-2">Add Employee</button>
     </form>
   </div>
-  {{employees}}
-  <div class="container mt-5">
-    <h2>Employees Detail</h2>
-    <table class="table table-bordered mt-3">
-        <thead class="thead-light">
-            <tr>
-                <th>Employee_id</th>
-                <th>Employee_name</th>
-                <th>Employee_address</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-          {% for emp in employees %}
-          
-            <tr>
-                <td>{{emp.e_id}}</td>
-                <td>{{emp.e_name}}</td>
-                <td>{{emp.e_addr}}</td>
-                <td>
-                    <div class="btn-group" role="group" aria-label="Actions">
-                        <button type="button" class="btn btn-success">Update</button>
-                        <button type="button" class="btn btn-danger">Delete</button>
-                    </div>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
-
-{% endblock %}
+  {% endblock %}

@@ -11,8 +11,7 @@ def employees(request):
     return render(request,'employees.html')
 
 def login_page(request):
-    queryset = Employee.objects.all()
-    print("Name: " ,queryset)
+    
 
     if request.method == "POST":
         username = request.POST.get('username')
@@ -64,8 +63,6 @@ def register(request):
     return render(request, 'register.html')
 
 def add_employee(request):
-    queryset = Employee.objects.all()
-    print("Name: " ,queryset)
     
     if request.method=="POST":
         data=request.POST
@@ -80,6 +77,7 @@ def add_employee(request):
         messages.info(request, "Employee added Successfully!")
         return redirect('/employees/')
     
-    
-    context={"employees": queryset}
-    return render(request, 'employees.html', context)
+def employee_list(request):
+    queryset = Employee.objects.all()
+    context={'employees':queryset}
+    return render(request, 'employee_list.html',context)
