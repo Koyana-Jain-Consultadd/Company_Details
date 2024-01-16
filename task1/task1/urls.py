@@ -29,5 +29,9 @@ urlpatterns = [
     path('employee_list/', employee_list, name="employee_list"),
     path('delete_emp/<id>/', delete_emp, name="delete_emp"),
     path('update_emp/<id>/', update_emp, name="update_emp"),
+    path('add_department/', add_department, name="add_department"),
+    path('department_list/', department_list , name="department_list"),
+    path('update_dep/<id>/', update_dep, name="update_dep"),
+    path('delete_dep/<id>/', delete_dep, name="delete_dep"),
     
 ]

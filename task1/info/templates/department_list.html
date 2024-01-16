@@ -3,29 +3,31 @@
 
   <div class="container mt-5">
     <button type="button" class="btn btn-primary float-end" onclick="location.href='/employees/'">
-        Add Employees
+        Add Department
       </button>
-    <h2>Employees Detail</h2>
+    <h2>Department Detail</h2>
     <table class="table table-bordered mt-3">
         <thead class="thead-light">
             <tr>
-                <th>Employee_id</th>
-                <th>Employee_name</th>
-                <th>Employee_address</th>
+                <th>Department_id</th>
+                <th>Department_name</th>
+                <th>Manager</th>
+                <th>Employee ID</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-          {% for emp in employees %}
+          {% for d in departments %}
           
             <tr>
-                <td>{{emp.e_id}}</td>
-                <td>{{emp.e_name}}</td>
-                <td>{{emp.e_addr}}</td>
+                <td>{{d.d_id}}</td>
+                <td>{{d.d_name}}</td>
+                <td>{{d.manager.e_name}}</td>
+                <td>{{d.manager.e_id}}</td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Actions">
-                        <a href="/update_emp/{{emp.e_id}}/" class="btn btn-success">Update</a>
-                        <a href="/delete_emp/{{emp.e_id}}/" class="btn btn-danger">Delete</a>
+                        <a href="/update_dep/{{d.d_id}}/" class="btn btn-success">Update</a>
+                        <a href="/delete_dep/{{d.d_id}}/" class="btn btn-danger">Delete</a>
                     
                     </div>
                 </td>

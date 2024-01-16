@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from info.models import *
 from info.views import *
 from django.contrib.auth.models import User
@@ -101,3 +101,50 @@ def update_emp(request,id):
         messages.info(request, "Employee Updated Successfully!")
     context={'employees':queryset}
     return render(request, 'update_emp.html',context)
+
+def add_department(request):
+    
+    if request.method == "POST":
+        data = request.POST
+
+        d_name = data.get('d_name')
+        manager_name = data.get('manager')
+
+        # Fetch the Employee instance based on the provided manager name
+        manager_employee = get_object_or_404(Employee, e_name=manager_name)
+
+        Department.objects.create(
+            d_name=d_name,
+            manager=manager_employee,
+        )
+        messages.info(request, "Department added Successfully!")
+        return redirect('/employees/')
+    
+def department_list(request):
+    queryset = Department.objects.all()
+    context={'departments':queryset}
+    return render(request, 'department_list.html',context)
+
+
+def update_dep(request,id):
+    queryset=Department.objects.get(d_id=id)
+    if request.method == "POST":
+        data=request.POST
+        d_name=data.get('d_name')
+        manager=data.get('manager')
+
+        manager_employee = get_object_or_404(Employee, e_name=manager)
+
+
+        queryset.d_name=d_name
+        queryset.manager=manager_employee
+        
+        queryset.save()
+        messages.info(request, "Department Updated Successfully!")
+    context={'departments':queryset}
+    return render(request, 'update_dep.html',context)
+
+def delete_dep(request,id):
+    queryset=Department.objects.get(d_id=id)
+    queryset.delete()
+    return redirect('department_list')
